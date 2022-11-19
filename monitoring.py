@@ -219,7 +219,6 @@ class BaseMonitoring:
            "text": '_*** P-value - вероятность получить такое или еще более отклоняющееся от среднего знач-е при условии того, что метрика ведет себя обычным образом в рамках погрешности._'}})
         return blocks
     def send_message(self, message_blocks, metric_chart_in_bytes, slack_token, test_mode = False):
-        slack_token = "xoxb-43874855430-1746437143205-hzMSYFsXTwKGsYbmx35TnECd"
         post_message_to_slack('', slack_token, self.slack_channel_for_alerting_messages, as_user=True, blocks=message_blocks, test_mode = test_mode)
         post_file_to_slack(slack_token, self.slack_channel_for_alerting_messages, '', f'{self.metric.metric_name}.png', metric_chart_in_bytes, test_mode = test_mode)  
     def run(self, slack_token, query_params: dict = dict(), test_mode = False):
